@@ -6,6 +6,7 @@
 - 已引入 淘宝的 meta viewport
 - 已设置部分 CSS Reset
 - 已引入 styled-components 
+- 已引入基础 zustand
 
 - 已引入 Icon
   使用方式：

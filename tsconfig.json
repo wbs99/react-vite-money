@@ -24,6 +24,8 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
+    "src/store/useCount.js",
+    "src/store/useCount.js",
   ],
   "references": [
     {
