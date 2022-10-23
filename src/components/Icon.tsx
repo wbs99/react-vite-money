@@ -5,7 +5,7 @@ type Props = {
   className?: string;
 };
 
-export const Icon = (props: Props) => {
+export const Icon: React.FC<Props> = (props) => {
   const { name, className, } = props
   return (
     <svg className={cs("icon", className)} >
