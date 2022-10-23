@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { Icon } from "./Icon"
 import { MyLayout } from "./Mylayout"
 
-export const Welcome2: React.FC = () => {
+export const Welcome4 = () => {
   return (
     <MyLayout iconSlot={iconSlot()} titleSlot={titleSlot()} navLinkSlot={navLinkSlot()}></MyLayout>
 
@@ -10,9 +10,10 @@ export const Welcome2: React.FC = () => {
 }
 
 
+
 const iconSlot = () => {
   return (
-    <Icon name='cloud' className="icon" />
+    <Icon name='chart' className="icon" />
   )
 }
 
@@ -26,7 +27,7 @@ const navLinkSlot = () => {
   return (
     <>
       <NavLink className="fake" to="/start"></NavLink>
-      <NavLink to="/welcome/3">下一页</NavLink>
+      <NavLink to="/welcome/4"></NavLink>
       <NavLink to="/start">跳过</NavLink>
     </>
   )
