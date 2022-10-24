@@ -3,12 +3,14 @@ import { Button } from "../components/Button"
 import { Center } from "../components/Center"
 import { FloatButton } from "../components/FloatButton"
 import { Icon } from "../components/Icon"
+import { Navbar } from "../components/Navbar"
 
 export const Start = () => {
   const onClick = () => { console.log('你好啊') }
 
   return (
     <StartPageWrapper>
+      <Navbar title='viko 记账' iconSlot={iconSlot()} />
       <CenterWrapper>
         <Center slotA={slotA()} className='pig_wrapper' />
       </CenterWrapper>
@@ -33,6 +35,13 @@ const slotA = () => {
   return (
     <Icon name="pig" />
   )
+}
+
+const iconSlot = () => {
+  return (
+    <Icon name='menu' />
+  )
+
 }
 
 const CenterWrapper = styled.div`
