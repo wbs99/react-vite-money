@@ -5,7 +5,7 @@ import { Navbar } from "./Navbar"
 
 type Props = {
   title: string
-  mainSlot: ReactElement
+  mainSlot: any
   iconSlot: ReactElement
   onClickMenu?: () => void
 }
