@@ -1,23 +1,29 @@
+import { useState } from "react"
 import styled from "styled-components"
 import { Button } from "../components/Button"
 import { Center } from "../components/Center"
 import { FloatButton } from "../components/FloatButton"
 import { Icon } from "../components/Icon"
 import { Navbar } from "../components/Navbar"
+import { Overlay } from "../components/Overlay"
 
 export const Start = () => {
-  const onClick = () => { console.log('你好啊') }
+  const onButtonClick = () => { console.log('你好啊') }
+  const [overlay, setOverlay] = useState(false)
+  const clickMenu = () => { setOverlay(!overlay) }
+
 
   return (
     <StartPageWrapper>
-      <Navbar title='viko 记账' iconSlot={iconSlot()} />
+      <Navbar title='viko 记账' iconSlot={iconSlot()} onClickMenu={clickMenu} />
       <CenterWrapper>
         <Center slotA={slotA()} className='pig_wrapper' />
       </CenterWrapper>
       <div className="button_wrapper">
-        <Button className='button' buttonText='测试' onClick={onClick} />
+        <Button className='button' buttonText='测试' onClick={onButtonClick} />
       </div>
       <FloatButton />
+      {overlay && <Overlay onClickMenu={clickMenu} />}
     </StartPageWrapper>
   )
 }
@@ -36,6 +42,7 @@ const slotA = () => {
     <Icon name="pig" />
   )
 }
+
 
 const iconSlot = () => {
   return (
