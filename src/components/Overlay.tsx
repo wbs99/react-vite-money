@@ -4,7 +4,7 @@ import { Icon } from "./Icon"
 
 
 type Props = {
-  onClickMenu: () => void
+  onClickMenu?: () => void
 }
 
 export const Overlay: React.FC<Props> = (props) => {

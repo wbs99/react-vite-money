@@ -4,18 +4,31 @@ import { Button } from "../components/Button"
 import { Center } from "../components/Center"
 import { FloatButton } from "../components/FloatButton"
 import { Icon } from "../components/Icon"
-import { Navbar } from "../components/Navbar"
 import { Overlay } from "../components/Overlay"
+import { MainPage } from "../components/MainPage"
 
 export const Start = () => {
-  const onButtonClick = () => { console.log('你好啊') }
   const [overlay, setOverlay] = useState(false)
   const clickMenu = () => { setOverlay(!overlay) }
-
-
   return (
     <StartPageWrapper>
-      <Navbar title='viko 记账' iconSlot={iconSlot()} onClickMenu={clickMenu} />
+      <MainPage title='viko 记账' iconSlot={iconSlot(clickMenu)} onClickMenu={clickMenu} mainSlot={mainSlot(overlay, clickMenu)} />
+    </StartPageWrapper>
+  )
+}
+
+
+const iconSlot = (clickMenu: () => void) => {
+  return (
+    <Icon name='menu' onClick={clickMenu} />
+  )
+
+}
+const mainSlot = (overlay: boolean, clickMenu: () => void) => {
+  const onButtonClick = () => { }
+
+  return (
+    <>
       <CenterWrapper>
         <Center slotA={slotA()} className='pig_wrapper' />
       </CenterWrapper>
@@ -23,8 +36,12 @@ export const Start = () => {
         <Button className='button' buttonText='测试' onClick={onButtonClick} />
       </div>
       <FloatButton />
-      {overlay && <Overlay onClickMenu={clickMenu} />}
-    </StartPageWrapper>
+      {overlay && <Overlay onClickMenu={clickMenu} />} </>
+  )
+}
+const slotA = () => {
+  return (
+    <Icon name="pig" />
   )
 }
 
@@ -36,20 +53,6 @@ const StartPageWrapper = styled.div`
     }
   }
 `
-
-const slotA = () => {
-  return (
-    <Icon name="pig" />
-  )
-}
-
-
-const iconSlot = () => {
-  return (
-    <Icon name='menu' />
-  )
-
-}
 
 const CenterWrapper = styled.div`
 >.pig_wrapper{

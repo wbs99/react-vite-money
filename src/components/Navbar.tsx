@@ -4,7 +4,7 @@ import styled from "styled-components"
 type Props = {
   title: string
   iconSlot: ReactElement
-  onClickMenu: () => void
+  onClickMenu?: () => void
 }
 
 export const Navbar: React.FC<Props> = (props) => {
@@ -14,7 +14,6 @@ export const Navbar: React.FC<Props> = (props) => {
     <NavbarWrapper >
       <span className="icon_wrapper" onClick={onClickMenu}>{iconSlot}</span>
       <span className="title_wrapper">{title}</span>
-
     </NavbarWrapper>
   )
 }
