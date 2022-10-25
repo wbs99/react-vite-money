@@ -1,7 +1,9 @@
 import { ReactElement, useState } from "react"
+import styled from "styled-components"
 import { Icon } from "../Icon"
 import { MainPage } from "../MainPage"
 import { Tab, Tabs } from "../Tabs"
+import { InputPad } from "./InputPad"
 
 type Props = {
 }
@@ -33,6 +35,16 @@ const mainSlot = () => {
           icon 列表2
         </Tab>
       </Tabs>
+      <InputPadWrapper>
+        <InputPad />
+      </InputPadWrapper>
     </>
   )
 }
+
+const InputPadWrapper = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+`
