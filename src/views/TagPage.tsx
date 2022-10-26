@@ -5,7 +5,7 @@ type Props = {
 
 export const TagPage: React.FC<Props> = () => {
   return (
-    <div>tag page
+    <div>
       <Outlet />
     </div>
   )

@@ -1,5 +1,6 @@
-import { ReactHTML, useState } from "react"
+import React, { ReactHTML, useState } from "react"
 import styled from "styled-components"
+import { Rules, validate } from "../../shared/validate"
 import { Button } from "../Button"
 import { EmojiSelect } from "../EmojiSelect"
 import { Icon } from "../Icon"
@@ -27,14 +28,25 @@ const mainSlot = () => {
     name: '',
     sign: ''
   })
+  const [errors, setErrors] = useState<{ [k in keyof typeof formData]?: string[] }>({})
   const onLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, name: e.target.value })
   }
   const onButtonClick = () => { console.log('你好啊') }
   const onClickEmoji = (emoji: string) => { setFormData({ ...formData, sign: emoji }) }
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const rules: Rules<typeof formData> = [
+      { key: "name", type: "required", message: "必填" },
+      { key: "name", type: "pattern", regex: /^.{1,4}$/, message: "只能填 1 到 4 个字符" },
+      { key: "sign", type: "required", message: "必填" },
+    ]
+    const errors = validate(formData, rules)
+    setErrors(errors)
+  }
   return (
     <FormWrapper>
-      <form className="form">
+      <form className="form" onSubmit={onSubmit}>
         <div className="formRow">
           <label className="formLabel">
             <span className="formItem_name">标签名</span>
@@ -42,7 +54,7 @@ const mainSlot = () => {
               <input value={formData.name} onChange={(e) => { onLabelChange(e) }} className="formItem input error"></input>
             </div>
             <div className="formItem_errorHint">
-              <span>必填</span>
+              <span>{errors['name'] ? errors['name'].join() : '　'}</span>
             </div>
           </label>
         </div>
@@ -53,7 +65,7 @@ const mainSlot = () => {
               <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
             </div>
             <div className="formItem_errorHint">
-              <span>必填</span>
+              <span>{errors['sign'] ? errors['sign'].join() : '　'}</span>
             </div>
           </label>
         </div>
