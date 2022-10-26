@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom'
 import { ItemCreate } from '../components/Items/ItemCreate';
 import { ItemList } from '../components/Items/ItemList';
 import { RedirectToWelcome1 } from '../components/RedirectToWelcome1';
+import { TagCreate } from '../components/tags/TagCreate';
+import { TagEdit } from '../components/tags/TagEdit';
 import { Test } from '../components/Test';
 import { Welcome1 } from '../components/Welcome1';
 import { Welcome2 } from '../components/Welcome2';
@@ -10,6 +12,7 @@ import { Welcome4 } from '../components/Welcome4';
 import { MainLayout } from '../layouts/MainLayout';
 import { ItemPage } from '../views/ItemPage';
 import { Start } from '../views/Start';
+import { TagPage } from '../views/TagPage';
 
 export const router = createBrowserRouter([
   {
@@ -43,5 +46,14 @@ export const router = createBrowserRouter([
   {
     path: "/test/:id",
     element: <Test />,
+  },
+  {
+    path: "/tags",
+    element: <TagPage />,
+    children: [
+      { path: 'create', element: <TagCreate /> },
+      { path: ':id', element: <TagEdit /> },
+
+    ]
   },
 ]);

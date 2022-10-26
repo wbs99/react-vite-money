@@ -146,7 +146,7 @@ const ButtonsWrapper = styled.div`
   border-top: 1px solid var(--button-border-color);
   > button {
     border: none;
-    background: var(--button-bg);
+    background: var(--number-button-bg);
     &:nth-child(1) {
       grid-area: n1;
     }
@@ -185,8 +185,8 @@ const ButtonsWrapper = styled.div`
     }
     &:nth-child(13) {
       grid-area: s;
-      background: var(--button-bg-important);
-      color: var(--button-text-important);
+     background: var(--number-button-bg-important);
+      color: var(--number-button-text-important);
     }
   }
   

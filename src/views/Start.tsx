@@ -25,7 +25,10 @@ const iconSlot = (clickMenu: () => void) => {
 
 }
 const mainSlot = (overlay: boolean, clickMenu: () => void) => {
-  const onButtonClick = () => { }
+  const onButtonClick = (theme = 'light') => {
+    const element = document.documentElement
+    !element.hasAttribute('theme') ? element.setAttribute('theme', theme) : element.removeAttribute('theme')
+  }
 
   return (
     <>
@@ -33,7 +36,7 @@ const mainSlot = (overlay: boolean, clickMenu: () => void) => {
         <Center slotA={slotA()} className='pig_wrapper' />
       </CenterWrapper>
       <div className="button_wrapper">
-        <Button className='button' buttonText='测试' onClick={onButtonClick} />
+        <Button className='button' buttonText='测试' onClick={() => { onButtonClick('dark') }} />
       </div>
       <FloatButton />
       {overlay && <Overlay onClickMenu={clickMenu} />} </>
