@@ -1,5 +1,7 @@
+import { ReactHTML, useState } from "react"
 import styled from "styled-components"
 import { Button } from "../Button"
+import { EmojiSelect } from "../EmojiSelect"
 import { Icon } from "../Icon"
 import { MainPage } from "../MainPage"
 
@@ -21,9 +23,15 @@ const iconSlot = () => {
 }
 
 const mainSlot = () => {
-  const onButtonClick = () => {
-    console.log('你好啊')
+  const [formData, setFormData] = useState({
+    name: '',
+    sign: ''
+  })
+  const onLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, name: e.target.value })
   }
+  const onButtonClick = () => { console.log('你好啊') }
+  const onClickEmoji = (emoji: string) => { setFormData({ ...formData, sign: emoji }) }
   return (
     <FormWrapper>
       <form className="form">
@@ -31,7 +39,7 @@ const mainSlot = () => {
           <label className="formLabel">
             <span className="formItem_name">标签名</span>
             <div className="formItem_value">
-              <input className="formItem input error"></input>
+              <input value={formData.name} onChange={(e) => { onLabelChange(e) }} className="formItem input error"></input>
             </div>
             <div className="formItem_errorHint">
               <span>必填</span>
@@ -40,160 +48,9 @@ const mainSlot = () => {
         </div>
         <div className="formRow">
           <label className="formLabel">
-            <span className="formItem_name">符号</span>
+            <span className="formItem_name">符号 {formData.sign}</span>
             <div className="formItem_value">
-              <div className="formItem emojiList error">
-                <nav>
-                  <span className="selected">表情</span>
-                  <span>手势</span>
-                  <span>职业</span>
-                  <span>衣服</span>
-                  <span>动物</span>
-                  <span>自然</span>
-                  <span>食物</span>
-                  <span>运动</span>
-                  <span>表情</span>
-                  <span>手势</span>
-                  <span>职业</span>
-                  <span>衣服</span>
-                  <span>动物</span>
-                  <span>自然</span>
-                  <span>食物</span>
-                  <span>运动</span>
-                </nav>
-                <ol>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                </ol>
-              </div>
+              <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
             </div>
             <div className="formItem_errorHint">
               <span>必填</span>
@@ -242,52 +99,6 @@ const FormWrapper = styled.div`
   }
    &.button{
     width: 100%;
-  }
-  &.emojiList {
-    flex-grow: 1;
-    border: 1px solid var(--input-border-color);
-    border-radius: var(--input-radius);
-    font-size: 18px;
-    font-size: 14px;
-    &.error {
-      border-color: var(--error-color);
-    }
-    > nav {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow: auto;
-      padding: 0 4px;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      > span {
-        flex-shrink: 0;
-        display: inline-block;
-        padding: 8px;
-        color: var(--emoji-nav-text);
-        &.selected {
-          color: var(--emoji-nav-text-selected);
-        }
-      }
-    }
-    > ol {
-      display: flex;
-      flex-wrap: wrap;
-      font-size: 22px;
-      line-height: 32px;
-      height: calc(32px * 12);
-      overflow: auto;
-      padding: 0 4px;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      > li {
-        flex-shrink: 0;
-        flex-grow: 0;
-        width: 10%;
-        text-align: center;
-      }
-    }
   }
   &_name {
   }
