@@ -82,11 +82,6 @@ export const InputPad: React.FC<Props> = () => {
                 onConfirm={onDatePickerConfirm}
               />
             </Popup>
-            {/* <Popup position='bottom' v-model:show={refDatePickerVisible.value}>
-              <DatetimePicker value={refDate.value} type="date" title="选择年月日"
-                onConfirm={setDate} onCancel={hideDatePicker}
-              />
-            </Popup> */}
           </span>
         </span>
         <span className="amount">{amount}</span>
@@ -101,7 +96,8 @@ export const InputPad: React.FC<Props> = () => {
 }
 
 const DateAndAmountWrapper = styled.div`
-    display: flex;
+  background: var(--overlay-bg);
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
@@ -185,7 +181,7 @@ const ButtonsWrapper = styled.div`
     }
     &:nth-child(13) {
       grid-area: s;
-     background: var(--number-button-bg-important);
+      background: var(--number-button-bg-important);
       color: var(--number-button-text-important);
     }
   }

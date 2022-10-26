@@ -4,7 +4,6 @@ import styled from "styled-components"
 interface Props {
   slotA: ReactElement
   className: string
-
 }
 
 export const Center: React.FC<Props> = (props) => {
