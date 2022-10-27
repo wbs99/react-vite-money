@@ -10,43 +10,36 @@ import { MainPage } from "../components/MainPage"
 export const Start = () => {
   const [overlay, setOverlay] = useState(false)
   const clickMenu = () => { setOverlay(!overlay) }
-  return (
-    <StartPageWrapper>
-      <MainPage title='viko 记账' iconSlot={iconSlot(clickMenu)} onClickMenu={clickMenu} mainSlot={mainSlot(overlay, clickMenu)} />
-    </StartPageWrapper>
-  )
-}
-
-
-const iconSlot = (clickMenu: () => void) => {
-  return (
-    <Icon name='menu' onClick={clickMenu} />
-  )
-
-}
-const mainSlot = (overlay: boolean, clickMenu: () => void) => {
   const onButtonClick = (theme = 'light') => {
     const element = document.documentElement
     !element.hasAttribute('theme') ? element.setAttribute('theme', theme) : element.removeAttribute('theme')
   }
+  return (
+    <StartPageWrapper>
+      <MainPage
+        title='viko 记账'
+        iconSlot={<Icon name='menu' onClick={clickMenu} />}
+        onClickMenu={clickMenu}
+        mainSlot={
+          <>
+            <CenterWrapper>
+              <Center
+                slotA={<Icon name="pig" />}
+                className='pig_wrapper'
+              />
+            </CenterWrapper>
+            <div className="button_wrapper">
+              <Button className='button' buttonText='测试' onClick={() => { onButtonClick('dark') }} />
+            </div>
+            <FloatButton />
+            {overlay && <Overlay onClickMenu={clickMenu} />}
+          </>
+        }
+      />
+    </StartPageWrapper>
+  )
+}
 
-  return (
-    <>
-      <CenterWrapper>
-        <Center slotA={slotA()} className='pig_wrapper' />
-      </CenterWrapper>
-      <div className="button_wrapper">
-        <Button className='button' buttonText='测试' onClick={() => { onButtonClick('dark') }} />
-      </div>
-      <FloatButton />
-      {overlay && <Overlay onClickMenu={clickMenu} />} </>
-  )
-}
-const slotA = () => {
-  return (
-    <Icon name="pig" />
-  )
-}
 
 const StartPageWrapper = styled.div`
   .button {
@@ -60,7 +53,5 @@ const StartPageWrapper = styled.div`
 const CenterWrapper = styled.div`
 >.pig_wrapper{
   padding: 120px 0;
-
 }
-  
 `

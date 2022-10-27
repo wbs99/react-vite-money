@@ -6,8 +6,7 @@ interface Props {
   className: string
 }
 
-export const Center: React.FC<Props> = (props) => {
-  const { slotA, ...rest } = props
+export const Center: React.FC<Props> = ({ slotA, ...rest }) => {
 
   return (
     <CenterWrapper {...rest}>{slotA}</CenterWrapper>

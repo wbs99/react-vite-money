@@ -10,20 +10,6 @@ type Props = {
 }
 
 export const TagCreate: React.FC<Props> = () => {
-  return (
-    <div>
-      <MainPage title='创建标签' iconSlot={iconSlot()} mainSlot={mainSlot()} />
-    </div>
-  )
-}
-
-const iconSlot = () => {
-  return (
-    <Icon name='left' />
-  )
-}
-
-const mainSlot = () => {
   const [formData, setFormData] = useState({
     name: '',
     sign: ''
@@ -45,40 +31,48 @@ const mainSlot = () => {
     setErrors(errors)
   }
   return (
-    <FormWrapper>
-      <form className="form" onSubmit={onSubmit}>
-        <div className="formRow">
-          <label className="formLabel">
-            <span className="formItem_name">标签名</span>
-            <div className="formItem_value">
-              <input value={formData.name} onChange={(e) => { onLabelChange(e) }} className="formItem input error"></input>
-            </div>
-            <div className="formItem_errorHint">
-              <span>{errors['name'] ? errors['name'].join() : '　'}</span>
-            </div>
-          </label>
-        </div>
-        <div className="formRow">
-          <label className="formLabel">
-            <span className="formItem_name">符号 {formData.sign}</span>
-            <div className="formItem_value">
-              <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
-            </div>
-            <div className="formItem_errorHint">
-              <span>{errors['sign'] ? errors['sign'].join() : '　'}</span>
-            </div>
-          </label>
-        </div>
-        <p className="tips">记账时长按标签即可进行编辑</p>
-        <div className="formRow">
-          <div className="formItem_value">
-            <Button className="formItem button" buttonText='确定' onClick={onButtonClick} />
-          </div>
-        </div>
-      </form>
-    </FormWrapper>
+    <div>
+      <MainPage title='创建标签'
+        iconSlot={<Icon name='left' />}
+        mainSlot={
+          <FormWrapper>
+            <form className="form" onSubmit={onSubmit}>
+              <div className="formRow">
+                <label className="formLabel">
+                  <span className="formItem_name">标签名</span>
+                  <div className="formItem_value">
+                    <input value={formData.name} onChange={(e) => { onLabelChange(e) }} className="formItem input error"></input>
+                  </div>
+                  <div className="formItem_errorHint">
+                    <span>{errors['name'] ? errors['name'].join() : '　'}</span>
+                  </div>
+                </label>
+              </div>
+              <div className="formRow">
+                <label className="formLabel">
+                  <span className="formItem_name">符号 {formData.sign}</span>
+                  <div className="formItem_value">
+                    <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
+                  </div>
+                  <div className="formItem_errorHint">
+                    <span>{errors['sign'] ? errors['sign'].join() : '　'}</span>
+                  </div>
+                </label>
+              </div>
+              <p className="tips">记账时长按标签即可进行编辑</p>
+              <div className="formRow">
+                <div className="formItem_value">
+                  <Button className="formItem button" buttonText='确定' onClick={onButtonClick} />
+                </div>
+              </div>
+            </form>
+          </FormWrapper>
+        }
+      />
+    </div>
   )
 }
+
 
 const FormWrapper = styled.div`
 .tips{

@@ -30,7 +30,7 @@ const NavWrapper = styled.nav`
   }
 `
 
-const Nav = () => {
+export const Nav = () => {
   let activeClassName = "selected";
   return (
     <NavWrapper>
@@ -64,5 +64,3 @@ const Nav = () => {
     </NavWrapper>
   )
 }
-
-export default Nav
