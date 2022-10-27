@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { DatetimePicker, Popup } from "react-vant"
 import styled from "styled-components"
-import { time } from "../../shared/time"
+import { Time } from "../../shared/time"
 import { Icon } from "../Icon"
 
 type Props = {
@@ -66,7 +66,7 @@ export const InputPad: React.FC<Props> = () => {
         <span className='date'>
           <Icon name="date" />
           <span>
-            <span onClick={showDatePicker}>{time(date).format()}</span>
+            <span onClick={showDatePicker}>{new Time(date).format()}</span>
             <Popup
               position='bottom'
               style={{ height: '30%' }}
