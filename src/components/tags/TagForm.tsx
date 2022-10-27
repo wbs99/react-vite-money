@@ -1,5 +1,4 @@
 import { useState } from "react"
-import styled from "styled-components"
 import { Rules, validate } from "../../shared/validate"
 import { Button } from "../Button"
 import { EmojiSelect } from "../EmojiSelect"
@@ -26,117 +25,35 @@ export const TagForm: React.FC<Props> = () => {
     const errors = validate(formData, rules)
     setErrors(errors)
   }
-  const onLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('sign')
-    console.log(formData.sign)
-    setFormData({ ...formData, name: e.target.value })
-  }
-  const onClickEmoji = (emoji: string) => {
-    console.log('name')
-    console.log(formData.name)
-    setFormData({ ...formData, sign: emoji })
-  }
+  const onLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => { setFormData({ ...formData, name: e.target.value }) }
+  const onClickEmoji = (emoji: string) => { setFormData({ ...formData, sign: emoji }) }
 
   return (
-    <FormWrapper>
-      <form className="form" onSubmit={onSubmit}>
-        <div className="formRow">
-          <label className="formLabel">
-            <span className="formItem_name">标签名{formData.name} </span>
-            <div className="formItem_value">
-              <input value={formData.name} onChange={(e) => { onLabelChange(e) }} className="formItem input error"></input>
-            </div>
-            <div className="formItem_errorHint">
-              <span>{errors['name'] ? errors['name'].join() : '　'}</span>
-            </div>
-          </label>
-        </div>
-        <div className="formRow">
-          <label className="formLabel">
-            <span className="formItem_name">符号 {formData.sign}</span>
-            <div className="formItem_value">
-              <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
-            </div>
-            <div className="formItem_errorHint">
-              <span>{errors['sign'] ? errors['sign'].join() : '　'}</span>
-            </div>
-          </label>
-        </div>
-        <p className="tips">记账时长按标签即可进行编辑</p>
-        <div className="formRow">
-          <div className="formItem_value">
-            <Button className="formItem button" buttonText='确定' onClick={onButtonClick} />
-          </div>
-        </div>
-      </form>
-      {/* <Form onSubmit={onSubmit}>
-        <FormItem label="标签名" value={formData.name} error={errors['name'] ? errors['name'].join() : '　'}
-          content={
-            <input
-              value={formData.name}
-              onChange={(e) => { onLabelChange(e) }}
-              className="formItem input error"
-            ></input>
-          }
-        />
-        <FormItem label="符号" value={formData.sign} error={errors['sign'] ? errors['sign'].join() : '　'}
-          content={
-            <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
-          }
-        />
-        <p className="tips">记账时长按标签即可进行编辑</p>
-        <FormItem
-          content={
-            <Button className="formItem button" buttonText='确定' onClick={onButtonClick} />
-          }
-        />
-      </Form> */}
-    </FormWrapper>
+    <Form onSubmit={onSubmit}>
+      <FormItem label="标签名" error={errors['name'] ? errors['name'].join() : '　'}
+        content={
+          <input
+            value={formData.name}
+            onChange={(e) => { onLabelChange(e) }}
+            className="formItem input error"
+          ></input>
+        }
+      />
+      <FormItem label="符号" value={formData.sign} error={errors['sign'] ? errors['sign'].join() : '　'}
+        content={
+          <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
+        }
+      />
+      <FormItem
+        content={
+          <p className="tips">记账时长按标签即可进行编辑</p>
+        }
+      />
+      <FormItem
+        content={
+          <Button className="formItem button" buttonText='确定' onClick={onButtonClick} />
+        }
+      />
+    </Form>
   )
 }
-
-const FormWrapper = styled.div`
-.tips{
-  text-align: center;
-  padding: 16px 0;
-}
-.form {
-  padding: 16px;
-}
-.formRow {
-  margin-top: 8px;
-}
-.formLabel {
-}
-.formItem {
-  min-height: var(--input-min-height);
-  max-width: 100%;
-  &.input {
-    flex-grow: 1;
-    border: 1px solid var(--input-border-color);
-    border-radius: var(--input-radius);
-    font-size: 18px;
-    font-family: inherit;
-    padding-left: 16px;
-    padding-right: 16px;
-    box-shadow: inset 0 0 3px var(--input-shadow);
-    &.error {
-      border-color: var(--error-color);
-    }
-  }
-   &.button{
-    width: 100%;
-  }
-  &_name {
-  }
-  &_value {
-    display: flex;
-    margin-top: 4px;
-  }
-  &_errorHint {
-    margin-top: 4px;
-    color: var(--error-color);
-    font-size: 12px;
-  }
-}
-`

@@ -41,7 +41,7 @@ const FormWrapper = styled.form`
   padding: 16px;
 `
 const FormItemWrapper = styled.div`
-    margin-top: 8px;
+margin-top: 8px;
 .formLabel {
 }
 .formItem {
@@ -74,9 +74,11 @@ const FormItemWrapper = styled.div`
     color: var(--error-color);
     font-size: 12px;
   }
-  .tips{
+
+}
+.tips{
+  width:100%;
   text-align: center;
   padding: 16px 0;
-}
 }
 `

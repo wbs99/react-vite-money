@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import styled from "styled-components"
 import { emojiList } from "../shared/emojiList"
 
@@ -30,20 +30,15 @@ export const EmojiSelect: React.FC<Props> = (props) => {
     ]],
     ['运动', ['sport', 'game']],
   ]
-  const [emojis, setEmojis] = useState<[][]>([])
 
-
-  useEffect(() => {
+  const emojis = () => {
     const selectedItem = table[selected][1]
-    const xxx: any = selectedItem.map(category =>
+    return selectedItem.map(category =>
       emojiList.find(item => item[0] === category)?.[1]
-        .map(item => <li key={item} onClick={() => {
-          console.log(123)
-          onClickEmoji(item)
-        }}>{item}</li>)
+        .map(item => <li key={item} onClick={() => { onClickEmoji(item) }}>{item}</li>)
     )
-    setEmojis(xxx)
-  }, [selected])
+  }
+
 
   const onClick = (index: number) => { setSelected(index) }
   return (
@@ -60,7 +55,7 @@ export const EmojiSelect: React.FC<Props> = (props) => {
         )}
       </nav>
       <ol>
-        {emojis}
+        {emojis()}
       </ol>
     </EmojiListWrapper>
   )
