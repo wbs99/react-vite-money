@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { Overlay } from "react-vant"
+import styled from "styled-components"
 import { Time } from "../../shared/time"
 import { Icon } from "../Icon"
 import { MainPage } from "../MainPage"
@@ -32,6 +34,8 @@ export const ItemList: React.FC<Props> = () => {
     }
   ]
 
+  const [visible, setVisible] = useState(true)
+
 
   return (
     <div>
@@ -62,9 +66,52 @@ export const ItemList: React.FC<Props> = () => {
                   endDate={timeList[0].end.format()} />
               </Tab>
             </Tabs>
+            <OverlayWrapper >
+              <Overlay visible={visible} onClick={() => setVisible(false)} className='overlay'
+              >
+                <div className="overlay_inner">
+                  <header>
+                    请选择时间
+                  </header>
+                  <main>
+                    <form>
+                      <div>111
+
+                      </div>
+                      <div>222
+
+                      </div>
+                    </form>
+                  </main>
+                </div>
+              </Overlay>
+
+            </OverlayWrapper>
+
           </>
         }
       />
     </div>
   )
 }
+
+const OverlayWrapper = styled.div`
+.overlay{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  background: var(--overlay-mask-bg);
+  &_inner {
+    background: var(--bg);
+    width: 80vw;
+    > header {
+      background: var(--main);
+      padding: 12px 16px;
+      color: var(--dialog-header-text);
+    }
+    > main{
+    }
+  }
+}
+`
