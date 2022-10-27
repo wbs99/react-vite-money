@@ -5,13 +5,14 @@ type Props = {
   title: string
   iconSlot: ReactElement
   onClickMenu?: () => void
+  className?: string
 }
 
 export const Navbar: React.FC<Props> = (props) => {
-  const { title, iconSlot, onClickMenu } = props
+  const { title, iconSlot, onClickMenu, ...rest } = props
 
   return (
-    <NavbarWrapper >
+    <NavbarWrapper {...rest} >
       <span className="icon_wrapper" onClick={onClickMenu}>{iconSlot}</span>
       <span className="title_wrapper">{title}</span>
     </NavbarWrapper>

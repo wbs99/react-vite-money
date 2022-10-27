@@ -52,8 +52,7 @@ export const router = createBrowserRouter([
     element: <TagPage />,
     children: [
       { path: 'create', element: <TagCreate /> },
-      { path: ':id', element: <TagEdit /> },
-
+      { path: ':id/edit', element: <TagEdit /> },
     ]
   },
 ]);

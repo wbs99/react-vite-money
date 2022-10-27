@@ -3,7 +3,7 @@ import styled from "styled-components"
 type Props = {
   buttonText: string
   onClick: () => void
-  className: string
+  className?: string
 }
 
 export const Button: React.FC<Props> = (props) => {
@@ -21,4 +21,7 @@ const ButtonWrapper = styled.button`
   font-size: var(--button-font-size);
   border-radius: var(--button-radius);
   height: var(--button-height);
+  &.danger{
+    background:var(--button-bg-danger);
+  }
 `
