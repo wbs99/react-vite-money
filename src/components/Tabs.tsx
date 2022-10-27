@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode, useEffect } from "react"
 import styled from "styled-components"
 
-type Props = {
+interface Props {
   selected: string
   children: ReactElement[]
   onClick: (name: string) => void
@@ -10,8 +10,8 @@ type Props = {
 
 interface TabProps {
   name: string
-  children: any
-  className: string
+  children: ReactNode
+  className?: string
 }
 
 const TabsWrapper = styled.div`
@@ -71,8 +71,7 @@ export const Tab: React.FC<TabProps> = (props) => {
   const { children } = props
   return (
     <>
-      {children[0]}
-      {children[1].map((item: any) => { return <div key={item.id} >{item}</div> })}
+      {children}
     </>
   )
 }
