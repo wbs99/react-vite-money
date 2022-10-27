@@ -35,11 +35,14 @@ export const EmojiSelect: React.FC<Props> = (props) => {
 
   useEffect(() => {
     const selectedItem = table[selected][1]
-    const emojis: any = selectedItem.map(category =>
+    const xxx: any = selectedItem.map(category =>
       emojiList.find(item => item[0] === category)?.[1]
-        .map(item => <li key={item} onClick={() => { onClickEmoji(item) }}>{item}</li>)
+        .map(item => <li key={item} onClick={() => {
+          console.log(123)
+          onClickEmoji(item)
+        }}>{item}</li>)
     )
-    setEmojis(emojis)
+    setEmojis(xxx)
   }, [selected])
 
   const onClick = (index: number) => { setSelected(index) }

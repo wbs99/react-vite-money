@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Rules, validate } from "../../shared/validate"
 import { Button } from "../Button"
 import { EmojiSelect } from "../EmojiSelect"
+import { Form, FormItem } from "../Form"
 
 type Props = {
 }
@@ -14,7 +15,7 @@ export const TagForm: React.FC<Props> = () => {
   })
   const [errors, setErrors] = useState<{ [k in keyof typeof formData]?: string[] }>({})
   const onButtonClick = () => { console.log('你好啊') }
-  const onClickEmoji = (emoji: string) => { setFormData({ ...formData, sign: emoji }) }
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const rules: Rules<typeof formData> = [
@@ -26,7 +27,14 @@ export const TagForm: React.FC<Props> = () => {
     setErrors(errors)
   }
   const onLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('sign')
+    console.log(formData.sign)
     setFormData({ ...formData, name: e.target.value })
+  }
+  const onClickEmoji = (emoji: string) => {
+    console.log('name')
+    console.log(formData.name)
+    setFormData({ ...formData, sign: emoji })
   }
 
   return (
@@ -34,7 +42,7 @@ export const TagForm: React.FC<Props> = () => {
       <form className="form" onSubmit={onSubmit}>
         <div className="formRow">
           <label className="formLabel">
-            <span className="formItem_name">标签名</span>
+            <span className="formItem_name">标签名{formData.name} </span>
             <div className="formItem_value">
               <input value={formData.name} onChange={(e) => { onLabelChange(e) }} className="formItem input error"></input>
             </div>
@@ -61,6 +69,28 @@ export const TagForm: React.FC<Props> = () => {
           </div>
         </div>
       </form>
+      {/* <Form onSubmit={onSubmit}>
+        <FormItem label="标签名" value={formData.name} error={errors['name'] ? errors['name'].join() : '　'}
+          content={
+            <input
+              value={formData.name}
+              onChange={(e) => { onLabelChange(e) }}
+              className="formItem input error"
+            ></input>
+          }
+        />
+        <FormItem label="符号" value={formData.sign} error={errors['sign'] ? errors['sign'].join() : '　'}
+          content={
+            <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
+          }
+        />
+        <p className="tips">记账时长按标签即可进行编辑</p>
+        <FormItem
+          content={
+            <Button className="formItem button" buttonText='确定' onClick={onButtonClick} />
+          }
+        />
+      </Form> */}
     </FormWrapper>
   )
 }
