@@ -49,6 +49,9 @@
   --total-expenses: #53A867;
   --bg: white;  
   --dialog-header-text: white;
+  --text: #333;
+  --van-overlay-z-index: 64;
+  --z-index-navbar: 32;
 }
 :root[theme='dark']{
   --navbar-text: black;

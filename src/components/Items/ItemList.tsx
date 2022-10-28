@@ -5,6 +5,7 @@ import { Time } from "../../shared/time"
 import { Start } from "../../views/Start"
 import { Form, FormItem } from "../Form"
 import { Icon } from "../Icon"
+import { IconOverlay } from "../IconOverlay"
 import { MainPage } from "../MainPage"
 import { Tab, Tabs } from "../Tabs"
 import { ItemSummary } from "./ItemSummary"
@@ -58,7 +59,7 @@ export const ItemList: React.FC<Props> = () => {
     <div>
       <MainPage
         title='viko 记账'
-        iconSlot={<Icon name='menu' />}
+        iconSlot={<IconOverlay />}
         mainSlot={
           <>
             <Tabs selected={selected} onClick={onTabChange} className='tabs' >

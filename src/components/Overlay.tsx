@@ -62,6 +62,7 @@ const OverlayWrapper = styled.div`
   left: 0;
   width: 16em;
   height: calc(100% - var(--top-safe-area-height));
+  color: var(--text);
   .currentUser {
   padding: 32px 16px;
   background: var(--overlay-user-bg);

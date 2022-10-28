@@ -30,6 +30,7 @@ const MainPageWrapper = styled.div`
 .navWrapper{
   position:sticky;
   top:0;
+  z-index:var(--z-index-navbar)
 }
   
 `
