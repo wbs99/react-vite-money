@@ -6,6 +6,7 @@ import { FloatButton } from "../components/FloatButton"
 import { Icon } from "../components/Icon"
 import { Overlay } from "../components/Overlay"
 import { MainPage } from "../components/MainPage"
+import { IconOverlay } from "../components/IconOverlay"
 
 export const Start = () => {
   const [overlay, setOverlay] = useState(false)
@@ -18,7 +19,7 @@ export const Start = () => {
     <StartPageWrapper>
       <MainPage
         title='viko 记账'
-        iconSlot={<Icon name='menu' onClick={clickMenu} />}
+        iconSlot={<IconOverlay />}
         onClickMenu={clickMenu}
         mainSlot={
           <>
@@ -32,7 +33,6 @@ export const Start = () => {
               <Button className='button' buttonText='测试' onClick={() => { onButtonClick('dark') }} />
             </div>
             <FloatButton />
-            {overlay && <Overlay onClickMenu={clickMenu} />}
           </>
         }
       />
