@@ -7,7 +7,7 @@ export const MainLayout: React.FC = () => {
     <Wrapper>
       <header>
         <Icon name='mangosteen' />
-        <h1>山竹记账</h1>
+        <h1>viko记账</h1>
       </header>
       <main>
         <Outlet />

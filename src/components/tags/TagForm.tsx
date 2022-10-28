@@ -30,7 +30,7 @@ export const TagForm: React.FC<Props> = () => {
 
   return (
     <Form onSubmit={onSubmit}>
-      <FormItem label="标签名" error={errors['name'] ? errors['name'].join() : '　'}
+      <FormItem label="标签名" error={errors['name'] && errors['name'].join()}
         content={
           <input
             value={formData.name}
@@ -39,7 +39,7 @@ export const TagForm: React.FC<Props> = () => {
           ></input>
         }
       />
-      <FormItem label="符号" value={formData.sign} error={errors['sign'] ? errors['sign'].join() : '　'}
+      <FormItem label="符号" value={formData.sign} error={errors['sign'] && errors['sign'].join()}
         content={
           <EmojiSelect value={formData.sign} onClickEmoji={onClickEmoji} />
         }

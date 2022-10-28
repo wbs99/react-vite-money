@@ -11,6 +11,7 @@ import { Welcome3 } from '../components/Welcome3';
 import { Welcome4 } from '../components/Welcome4';
 import { MainLayout } from '../layouts/MainLayout';
 import { ItemPage } from '../views/ItemPage';
+import { SignInPage } from '../views/SIgnInPage';
 import { Start } from '../views/Start';
 import { TagPage } from '../views/TagPage';
 
@@ -54,5 +55,9 @@ export const router = createBrowserRouter([
       { path: 'create', element: <TagCreate /> },
       { path: ':id/edit', element: <TagEdit /> },
     ]
+  },
+  {
+    path: "/sign_in",
+    element: <SignInPage />,
   },
 ]);
