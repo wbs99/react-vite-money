@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { ItemCreate } from '../components/Items/ItemCreate';
 import { ItemList } from '../components/Items/ItemList';
 import { RedirectToWelcome1 } from '../components/RedirectToWelcome1';
+import { Chart } from '../components/statistics/Chart';
 import { TagCreate } from '../components/tags/TagCreate';
 import { TagEdit } from '../components/tags/TagEdit';
 import { Test } from '../components/Test';
@@ -59,5 +60,9 @@ export const router = createBrowserRouter([
   {
     path: "/sign_in",
     element: <SignInPage />,
+  },
+  {
+    path: "/statistics",
+    element: <Chart />,
   },
 ]);
