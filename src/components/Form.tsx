@@ -81,6 +81,12 @@ const FormItemWrapper = styled.div`
   .validationCodeButton {
     margin-left: 16px;
   }
+  .select{
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-radius);
+    padding: 0 8px;
+    width:100%;
+  }
   .tips{
     width:100%;
     text-align: center;
