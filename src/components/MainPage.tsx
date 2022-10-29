@@ -27,10 +27,10 @@ export const MainPage: React.FC<Props> = (props) => {
 
 const MainPageWrapper = styled.div`
   position:relative;
-.navWrapper{
-  position:sticky;
-  top:0;
-  z-index:var(--z-index-navbar)
-}
-  
+  background-color:var(--bg);
+  .navWrapper{
+    position:sticky;
+    top:0;
+    z-index:var(--z-index-navbar)
+  }
 `
