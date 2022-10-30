@@ -4,12 +4,14 @@ type Props = {
   buttonText: string
   onClick: () => void
   className?: string
+  disabled?: boolean
+  buttonType?: 'button' | 'submit' | 'reset'
 }
 
 export const Button: React.FC<Props> = (props) => {
-  const { buttonText, onClick, ...rest } = props
+  const { buttonText, onClick, disabled, className, buttonType } = props
   return (
-    <ButtonWrapper onClick={() => onClick()} {...rest}>{buttonText}</ButtonWrapper>
+    <ButtonWrapper disabled={disabled} onClick={() => onClick()} className={className} type={buttonType}>{buttonText}</ButtonWrapper>
   )
 }
 
@@ -23,5 +25,9 @@ const ButtonWrapper = styled.button`
   height: var(--button-height);
   &.danger{
     background:var(--button-bg-danger);
+  }
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `
